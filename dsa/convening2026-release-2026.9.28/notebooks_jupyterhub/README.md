@@ -26,11 +26,18 @@ conda's activate scripts. `dsa13_timing` takes ~3 min and reproduces the expecte
 ```bash
 cd ~ && tar xzf ~/s3/schmidt-observatory-system/dsa/v1-convening/convening2026-release-2026.9.28.tar.gz
 pip install -e ~/convening2026-release-2026.9.28          # the convening2026 helper package
-# CHR notebooks only (not in the hub image):
-conda install -c conda-forge psrchive tempo2 pint-pulsar   # into the kernel's env
 ```
 
-Then open the notebooks with the hub's default Python 3 kernel. If the mount lives elsewhere,
+CHR notebooks only: PSRCHIVE, tempo2 and PINT are not in the hub image, so create the env and register it as a kernel
+(the hub's default Python 3 kernel does not have `pam`):
+
+```bash
+mamba env create -f ~/convening2026-release-2026.9.28/environment.yml
+/srv/conda/envs/convening2026/bin/python -m ipykernel install --user --name convening2026 --display-name "Python (convening2026)"
+```
+
+Then open `dsa13_*.ipynb` with **Python (convening2026)** (Kernel -> Change Kernel). `dsa3_load_plot` runs on the default
+Python 3 kernel. If the mount lives elsewhere,
 set `DSA_DATA=/path/to/v1-convening` before starting the kernel.
 
 ## Notes

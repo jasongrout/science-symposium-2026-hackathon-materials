@@ -26,7 +26,9 @@ CHR_PATHS += (
     "# A kernel started from a kernelspec does not run the conda activate.d scripts, so PSRCHIVE and TEMPO2 are unset:\n"
     "# pam then fails with `fits_execute_template ... psrheader.fits: file open failed`, tempo2 with `TEMPO2 not set`.\n"
     'os.environ.setdefault("PSRCHIVE", sys.prefix)\n'
-    'os.environ.setdefault("TEMPO2", sys.prefix + "/share/tempo2")\n')
+    'os.environ.setdefault("TEMPO2", sys.prefix + "/share/tempo2")\n'
+    "# the PSRCHIVE CLI (pam, psradd, pat, ...) must be on PATH: use the env that holds this kernel's python\n"
+    'os.environ["PATH"] = sys.prefix + "/bin:" + os.environ["PATH"]\n')
 assert "DSA_WORK" in CHR_PATHS
 
 INVENTORY = CHR_PATHS + '''from astropy.io import fits
