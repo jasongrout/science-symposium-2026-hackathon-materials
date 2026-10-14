@@ -2,7 +2,7 @@
 
 Copies of `../notebooks/` for the **Schmidt JupyterHub**, where the DSA release sits on the
 `schmidt-observatory-system` S3 bucket, NFS-mounted read-only at
-`~/s3/schmidt-observatory-system/dsa/v1-convening/` (6 visit-0 CHR archives, 10 DPR-DSA-07
+`~/s3/schmidt-observatory-system/dsa/v1-convening/` (10 DPR-DSA-07
 cubes; no `MANIFEST.csv`, `fold.par`, `volume.json`, README or DSA-03/11/12 files). The
 notebooks read straight from the mount and write everything (rewritten archives, `fold.par`,
 templates, ToAs) to `~/convening2026_work/`. Same science edits as `../notebooks_fixed/`.
@@ -14,6 +14,12 @@ templates, ToAs) to `~/convening2026_work/`. Same science edits as `../notebooks
 | `dsa13_timing.ipynb` | + PINT | same, plus outputs to `~/convening2026_work/templates/`; phase-connection limited to the visits present (visit 0) |
 
 `dsa11_dsa12_frb.ipynb` is not copied: the DSA-11/12 HDF5 files are not on the bucket.
+
+**CHR notebooks (`dsa13_*`)** read the 150 DPR-DSA-13 archives (P1-P3, visits 0-6) from the sibling
+`~/s3/schmidt-observatory-system/dsa/v2-convening/` and only rewrite the pulsar in use (P3, 42 files). Work files go
+to `/tmp/convening2026_work/` (set `DSA_WORK` to change it): the home directory has a quota that the `pam` rewrites
+exceed. The notebooks set `PSRCHIVE` and `TEMPO2` themselves, because a kernel started from a kernelspec does not run
+conda's activate scripts. `dsa13_timing` takes ~3 min and reproduces the expected chi2_red sequence for P3.
 
 ## Setup on the hub (once)
 
