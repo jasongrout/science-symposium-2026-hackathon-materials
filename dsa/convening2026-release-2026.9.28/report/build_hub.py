@@ -17,7 +17,21 @@ DS = Path(os.environ.get("DSA_DATA", "~/s3/schmidt-observatory-system/dsa/v1-con
 WORK = Path("~/convening2026_work").expanduser(); WORK.mkdir(exist_ok=True)   # the mount is read-only: outputs go here
 '''
 
-INVENTORY = PATHS + '''from astropy.io import fits
+CHR_PATHS = PATHS.replace("v1-convening", "v2-convening").replace(
+    'WORK = Path("~/convening2026_work").expanduser(); WORK.mkdir(exist_ok=True)   # the mount is read-only: outputs go here',
+    '# the mount is read-only and the home dir has a small quota: outputs go to local disk (DSA_WORK overrides)\n'
+    'WORK = Path(os.environ.get("DSA_WORK", "/tmp/convening2026_work")); WORK.mkdir(exist_ok=True)')
+CHR_PATHS += (
+    "import sys\n"
+    "# A kernel started from a kernelspec does not run the conda activate.d scripts, so PSRCHIVE and TEMPO2 are unset:\n"
+    "# pam then fails with `fits_execute_template ... psrheader.fits: file open failed`, tempo2 with `TEMPO2 not set`.\n"
+    'os.environ.setdefault("PSRCHIVE", sys.prefix)\n'
+    'os.environ.setdefault("TEMPO2", sys.prefix + "/share/tempo2")\n'
+    "# the PSRCHIVE CLI (pam, psradd, pat, ...) must be on PATH: use the env that holds this kernel's python\n"
+    'os.environ["PATH"] = sys.prefix + "/bin:" + os.environ["PATH"]\n')
+assert "DSA_WORK" in CHR_PATHS
+
+INVENTORY = CHR_PATHS + '''from astropy.io import fits
 # MANIFEST.csv is not on the bucket: build the inventory from the archives.
 # theta_deg / B_k / discovery (simulation metadata) are not recoverable from the files.
 # PSRCHIVE 2025.04.24 (conda-forge) crashes intermittently when loading the chrpreview-written archives;
@@ -25,7 +39,7 @@ INVENTORY = PATHS + '''from astropy.io import fits
 # `path` points at the rewritten copy (for PSRCHIVE), `orig` at the original (keeps the DSA header keywords).
 RW = WORK / "rewritten"; RW.mkdir(exist_ok=True)
 rows = []
-for p in sorted(DS.glob("*.psrfits")):
+for p in sorted(DS.glob("*_GLOBPSR_*.psrfits")):   # only this pulsar: rewriting all 150 archives is ~5 GB
     if not (RW / p.name).exists():
         H.sh(f"pam -e psrfits -u {RW} {p}")
     h = fits.getheader(p, 0); v, ptg = H.visit_ptg(p.name)
@@ -39,7 +53,7 @@ if not FOLD.exists():   # not on the bucket: recover the folding ephemeris store
     FOLD.write_text("\\n".join(r[0] for r in fits.getdata(arfile, "PSRPARAM")) + "\\n")'''
 
 NOTE = ("\n\n> **JupyterHub copy:** reads the release straight from the S3 mount "
-        "`~/s3/schmidt-observatory-system/dsa/v1-convening/` (read-only; 6 visit-0 CHR archives and 10 DPR-DSA-07 cubes, "
+        "`~/s3/schmidt-observatory-system/dsa/v1-convening/` (read-only; 10 DPR-DSA-07 cubes; the CHR archives are in `v2-convening/`), "
         "no `MANIFEST.csv`, `fold.par`, `volume.json` or DSA-03/11/12 files). ")
 KS = {"display_name": "Python 3", "language": "python", "name": "python3"}
 
@@ -61,9 +75,9 @@ nbf.write(nb, DST / "dsa3_load_plot.ipynb")
 # ---------------- dsa13_inspect_archives
 nb = nbf.read(SRC / "dsa13_inspect_archives.ipynb", as_version=4)
 nb.cells[0].source += NOTE + ("The inventory is built from the files, the folding ephemeris is read out of the archive, "
-                              "the beam term (needs `theta_deg`) is dropped, and outputs go to `~/convening2026_work/`.")
+                              "the beam term (needs `theta_deg`) is dropped, and outputs go to `/tmp/convening2026_work/`.")
 sub(nb, 2, "from convening2026 import data_dir\n", "")
-sub(nb, 2, "DATASET = str(data_dir())\nDS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY + "\n")
+sub(nb, 2, "DATASET = str(data_dir())\nDS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY.replace("GLOBPSR", "P3") + "\n")
 sub(nb, 4, 'readme = (DS / "README.md").read_text()\nprint(readme.split("## 2.")[0][:3000])        # section 1 of the data description\n',
            'if (DS / "README.md").exists():   # not on the bucket; see data/README.md in the release tarball\n'
            '    print((DS / "README.md").read_text().split("## 2.")[0][:3000])\n')
@@ -83,11 +97,11 @@ nbf.write(nb, DST / "dsa13_inspect_archives.ipynb")
 # ---------------- dsa13_timing
 nb = nbf.read(SRC / "dsa13_timing.ipynb", as_version=4)
 nb.cells[0].source += NOTE + ("The inventory is built from the files, the folding ephemeris is read out of an archive, "
-                              "the phase-connection steps are limited to the visits present (visit 0 only), and "
-                              "outputs go to `~/convening2026_work/`.")
+                              "the phase-connection steps are limited to the visits present, and "
+                              "outputs go to `/tmp/convening2026_work/` (`DSA_WORK` overrides; the home quota is too small).")
 sub(nb, 2, "from convening2026 import data_dir\n", "")
 sub(nb, 2, "DATASET = str(data_dir())\n", "")
-sub(nb, 2, "DS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY + "\narfile = man.path.iloc[0]\n" + FOLDPAR + "\n")
+sub(nb, 2, "DS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY.replace("GLOBPSR", "{PSR}").replace('.glob("*', '.glob(f"*') + "\narfile = man.path.iloc[0]\n" + FOLDPAR + "\n")
 sub(nb, 2, 'OUT = DS / "templates"\nif not os.access(OUT, os.W_OK):\n    OUT = Path.cwd() / "output_02"\n'
            '    print(f"{DS / \'templates\'} is not writable; writing to {OUT} instead")\n', 'OUT = WORK / "templates"\n')
 sub(nb, 4, "H.fold_ephemeris(DS, PSR)", "FOLD")
