@@ -1,22 +1,53 @@
-# Notebooks (main branch)
+# notebooks_jupyterhub/
 
-Download the sample into **`data/`** first ([data/README.md](../data/README.md)).
-Every notebook resolves products from that single directory.
+Copies of `../notebooks/` for the **Schmidt JupyterHub**, where the DSA release sits on the
+`schmidt-observatory-system` S3 bucket, NFS-mounted read-only at
+`~/s3/schmidt-observatory-system/dsa/v1-convening/` (10 DPR-DSA-07
+cubes; no `MANIFEST.csv`, `fold.par`, `volume.json`, README or DSA-03/11/12 files). The
+notebooks read straight from the mount and write everything (rewritten archives, `fold.par`,
+templates, ToAs) to `~/convening2026_work/`. Same science edits as `../notebooks_fixed/`.
+
+| Notebook | Needs | Changes vs original |
+|---|---|---|
+| `dsa3_load_plot.ipynb` | astropy, numpy, matplotlib (hub image) + `convening2026` | data root = mount; loads a DPR-DSA-07 cube (no DSA-03 in `v1-convening`) and averages it over frequency |
+| `dsa13_inspect_archives.ipynb` | + PSRCHIVE (CLI + Python), tempo2 | data root = mount; inventory built from the files; `fold.par` recovered from the PSRPARAM HDU into the work dir; beam term dropped; README / `volume.json` cells skipped |
+| `dsa13_timing.ipynb` | + PINT | same, plus outputs to `~/convening2026_work/templates/`; phase-connection limited to the visits present (visit 0) |
+
+`dsa11_dsa12_frb.ipynb` is not copied: the DSA-11/12 HDF5 files are not on the bucket.
+
+**CHR notebooks (`dsa13_*`)** read the 150 DPR-DSA-13 archives (P1-P3, visits 0-6) from the sibling
+`~/s3/schmidt-observatory-system/dsa/v2-convening/` and only rewrite the pulsar in use (P3, 42 files). Work files go
+to `/tmp/convening2026_work/` (set `DSA_WORK` to change it): the home directory has a quota that the `pam` rewrites
+exceed. The notebooks set `PSRCHIVE` and `TEMPO2` themselves, because a kernel started from a kernelspec does not run
+conda's activate scripts. `dsa13_timing` takes ~3 min and reproduces the expected chi2_red sequence for P3.
+
+## Setup on the hub (once)
 
 ```bash
-mamba activate convening2026   # or: pip install -e .
-cd notebooks && jupyter lab
+cd ~ && tar xzf ~/s3/schmidt-observatory-system/dsa/v1-convening/convening2026-release-2026.9.28.tar.gz
+pip install -e ~/convening2026-release-2026.9.28          # the convening2026 helper package
 ```
 
-| Notebook | Purpose |
-|----------|---------|
-| [dsa3_load_plot.ipynb](dsa3_load_plot.ipynb) | **DPR-DSA-03** continuum mosaic: find by name under `data/`, load, plot |
-| [dsa13_inspect_archives.ipynb](dsa13_inspect_archives.ipynb) | **DPR-DSA-13** CHR archives from `data/` (`MANIFEST.csv`) |
-| [dsa13_timing.ipynb](dsa13_timing.ipynb) | **DPR-DSA-13** timing with PSRCHIVE + PINT |
-| [dsa11_dsa12_frb.ipynb](dsa11_dsa12_frb.ipynb) | **DPR-DSA-11** / **DPR-DSA-12** FRB mocks under `data/` |
+CHR notebooks only: PSRCHIVE, tempo2 and PINT are not in the hub image, so create the env and register it as a kernel
+(the hub's default Python 3 kernel does not have `pam`):
 
-Helpers: `from convening2026 import data_dir, find_product` (and
-`convening2026.chr_helpers` for the CHR notebooks).
+```bash
+mamba env create -f ~/convening2026-release-2026.9.28/environment.yml
+/srv/conda/envs/convening2026/bin/python -m ipykernel install --user --name convening2026 --display-name "Python (convening2026)"
+```
 
-For CHR timing, a folding ephemeris (`data/fold.par` or `data/ephemerides/P3/fold.par`)
-is required. An `answer_key/` tree is **optional** (simulation truth for self-checks).
+Then open `dsa13_*.ipynb` with **Python (convening2026)** (Kernel -> Change Kernel). `dsa3_load_plot` runs on the default
+Python 3 kernel. If the mount lives elsewhere,
+set `DSA_DATA=/path/to/v1-convening` before starting the kernel.
+
+## Notes
+
+- Verified on a laptop against a read-only copy of the same 16 files (`chmod -w`), not on the
+  hub itself: all three run end to end with no errors.
+- The `pam` rewrite step (PSRCHIVE crash workaround, see `report/changes.md` item 5) is kept;
+  it is harmless if the hub's Linux PSRCHIVE does not have the crash (~100 MB, a few seconds).
+- `dsa/v2-convening/` on the bucket does hold a DSA-03 mosaic
+  (`mockfm_DPR-DSA-03_mp37_701.235_20260922.fits`); the original `dsa3_load_plot` works on it
+  if you point `DS` there and have the RAM for the full image (the parent repo's
+  `01_opening_fits_from_s3.ipynb` shows cutouts via `hdu.section` instead).
+- Regenerate from `report/build_hub.py` (run from the release root) if the originals change.
