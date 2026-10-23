@@ -44,7 +44,7 @@ nbf.write(nb, DST / "dsa3_load_plot.ipynb")
 
 # ---------------- dsa13_inspect_archives
 nb = nbf.read(SRC / "dsa13_inspect_archives.ipynb", as_version=4)
-nb.metadata["kernelspec"] = {"display_name": "Python 3 (convening2026)", "language": "python", "name": "convening2026"}
+nb.metadata["kernelspec"] = {"display_name": "Python 3 (dsahackathon2026)", "language": "python", "name": "dsahackathon2026"}
 nb.cells[0].source += ("\n\n> **Local copy:** `data/` has the 6 visit-0 archives only, no `MANIFEST.csv`, `fold.par` or "
                        "`volume.json`. The inventory is built from the files, the folding ephemeris is read out of "
                        "the archive, and the beam term (needs `theta_deg` from the manifest) is dropped.")
@@ -62,7 +62,7 @@ nbf.write(nb, DST / "dsa13_inspect_archives.ipynb")
 
 # ---------------- dsa13_timing
 nb = nbf.read(SRC / "dsa13_timing.ipynb", as_version=4)
-nb.metadata["kernelspec"] = {"display_name": "Python 3 (convening2026)", "language": "python", "name": "convening2026"}
+nb.metadata["kernelspec"] = {"display_name": "Python 3 (dsahackathon2026)", "language": "python", "name": "dsahackathon2026"}
 nb.cells[0].source += ("\n\n> **Local copy:** only the 6 visit-0 archives are in `data/`, with no `MANIFEST.csv` or "
                        "`fold.par`. The inventory is built from the files, the folding ephemeris is read out of an "
                        "archive, and the phase-connection steps are limited to the visits present (visit 0 only).")

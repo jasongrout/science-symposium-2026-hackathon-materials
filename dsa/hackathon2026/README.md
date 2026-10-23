@@ -12,7 +12,7 @@ the sample into `data/`, and run the notebooks.
 
 ```bash
 mamba env create -f environment.yml
-mamba activate convening2026
+mamba activate dsahackathon2026
 ```
 
 **pip only** (no PSRCHIVE — skip notebooks 02/03 or install PSRCHIVE another way):
@@ -50,7 +50,7 @@ jupyter lab
 Shared helpers:
 
 ```python
-from convening2026 import data_dir, find_product
+from dsahackathon2026 import data_dir, find_product
 
 data_dir()                  # .../data
 find_product("DPR-DSA-03")  # file under data/
@@ -70,7 +70,7 @@ participants**.
 .
 ├── data/                   # ★ download sample here
 ├── notebooks/              # walkthroughs
-├── src/convening2026/      # helpers imported by the notebooks
+├── src/dsahackathon2026/   # helpers imported by the notebooks
 ├── environment.yml
 ├── requirements.txt
 └── pyproject.toml

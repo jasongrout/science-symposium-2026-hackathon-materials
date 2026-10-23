@@ -36,7 +36,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/convening2026"]
+packages = ["src/dsahackathon2026"]
 
 [tool.uv.sources]
 # Used only with the optional [validate] extra.

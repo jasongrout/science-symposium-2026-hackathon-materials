@@ -28,14 +28,14 @@ def _quiet_pint() -> None:
 def inventory(dataset=None) -> pd.DataFrame:
     """Load ``MANIFEST.csv`` under the sample ``data/`` tree (absolute archive paths).
 
-    ``dataset`` defaults to :func:`convening2026.paths.data_dir`. If ``MANIFEST.csv``
+    ``dataset`` defaults to :func:`dsahackathon2026.paths.data_dir`. If ``MANIFEST.csv``
     is not at the root of that directory, a single nested copy under it is used.
 
     Paths in the manifest are resolved relative to the dataset root. If a listed
     file is missing at that relative path, a same-basename match anywhere under
     the dataset is used when unique.
     """
-    from convening2026.paths import require_data_dir
+    from dsahackathon2026.paths import require_data_dir
 
     ds = Path(dataset).expanduser() if dataset is not None else require_data_dir()
     if not ds.is_dir():
@@ -102,7 +102,7 @@ def fold_ephemeris(dataset=None, pulsar: str = "P3") -> Path:
 
     Accepts ``ephemerides/{pulsar}/fold.par`` or a top-level ``fold.par``.
     """
-    from convening2026.paths import require_data_dir
+    from dsahackathon2026.paths import require_data_dir
 
     ds = Path(dataset).expanduser() if dataset is not None else require_data_dir()
     candidates = [
@@ -122,7 +122,7 @@ def fold_ephemeris(dataset=None, pulsar: str = "P3") -> Path:
 
 def answer_key_dir(dataset=None, pulsar: str = "P3") -> Path | None:
     """Return ``answer_key/{pulsar}/`` if present; else ``None`` (optional self-check)."""
-    from convening2026.paths import require_data_dir
+    from dsahackathon2026.paths import require_data_dir
 
     ds = Path(dataset).expanduser() if dataset is not None else require_data_dir()
     for path in (

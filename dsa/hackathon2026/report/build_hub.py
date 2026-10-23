@@ -61,7 +61,7 @@ KS = {"display_name": "Python 3", "language": "python", "name": "python3"}
 nb = nbf.read(SRC / "dsa3_load_plot.ipynb", as_version=4)
 nb.cells[0].source += NOTE + "It loads a DSA-07 cube and averages it over frequency to get a 2D image."
 sub(nb, 1, 'PRODUCT = "DPR-DSA-03"', 'PRODUCT = "DPR-DSA-07"')
-sub(nb, 1, "from convening2026 import data_dir, find_product\n", "from pathlib import Path\nfrom convening2026 import find_product\n")
+sub(nb, 1, "from dsahackathon2026 import data_dir, find_product\n", "from pathlib import Path\nfrom dsahackathon2026 import find_product\n")
 sub(nb, 1, "data_dir()\n", PATHS.replace('WORK = Path("~/convening2026_work").expanduser(); WORK.mkdir(exist_ok=True)   # the mount is read-only: outputs go here\n', "") + "DS\n")
 sub(nb, 2, 'pattern=f"**/*{PRODUCT}*.fits")', 'pattern=f"**/*{PRODUCT}*.fits", data=DS)')
 sub(nb, 3, "    image = np.asarray(primary.data, dtype=float)\n",
@@ -76,7 +76,7 @@ nbf.write(nb, DST / "dsa3_load_plot.ipynb")
 nb = nbf.read(SRC / "dsa13_inspect_archives.ipynb", as_version=4)
 nb.cells[0].source += NOTE + ("The inventory is built from the files, the folding ephemeris is read out of the archive, "
                               "the beam term (needs `theta_deg`) is dropped, and outputs go to `/tmp/convening2026_work/`.")
-sub(nb, 2, "from convening2026 import data_dir\n", "")
+sub(nb, 2, "from dsahackathon2026 import data_dir\n", "")
 sub(nb, 2, "DATASET = str(data_dir())\nDS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY.replace("GLOBPSR", "P3") + "\n")
 sub(nb, 4, 'readme = (DS / "README.md").read_text()\nprint(readme.split("## 2.")[0][:3000])        # section 1 of the data description\n',
            'if (DS / "README.md").exists():   # not on the bucket; see data/README.md in the release tarball\n'
@@ -99,7 +99,7 @@ nb = nbf.read(SRC / "dsa13_timing.ipynb", as_version=4)
 nb.cells[0].source += NOTE + ("The inventory is built from the files, the folding ephemeris is read out of an archive, "
                               "the phase-connection steps are limited to the visits present, and "
                               "outputs go to `/tmp/convening2026_work/` (`DSA_WORK` overrides; the home quota is too small).")
-sub(nb, 2, "from convening2026 import data_dir\n", "")
+sub(nb, 2, "from dsahackathon2026 import data_dir\n", "")
 sub(nb, 2, "DATASET = str(data_dir())\n", "")
 sub(nb, 2, "DS = Path(DATASET)\nman = H.inventory(DS)\n", INVENTORY.replace("GLOBPSR", "{PSR}").replace('.glob("*', '.glob(f"*') + "\narfile = man.path.iloc[0]\n" + FOLDPAR + "\n")
 sub(nb, 2, 'OUT = DS / "templates"\nif not os.access(OUT, os.W_OK):\n    OUT = Path.cwd() / "output_02"\n'

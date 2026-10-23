@@ -1,5 +1,5 @@
 # DSA-2000 convening notebooks (main branch)
-name: convening2026
+name: dsahackathon2026
 channels:
   - conda-forge
 dependencies:

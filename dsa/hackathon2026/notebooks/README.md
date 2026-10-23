@@ -9,7 +9,7 @@ templates, ToAs) to `~/convening2026_work/`. Same science edits as `../notebooks
 
 | Notebook | Needs | Changes vs original |
 |---|---|---|
-| `dsa3_load_plot.ipynb` | astropy, numpy, matplotlib (hub image) + `convening2026` | data root = mount; loads a DPR-DSA-07 cube (no DSA-03 in `v1-convening`) and averages it over frequency |
+| `dsa3_load_plot.ipynb` | astropy, numpy, matplotlib (hub image) + `dsahackathon2026` | data root = mount; loads a DPR-DSA-07 cube (no DSA-03 in `v1-convening`) and averages it over frequency |
 | `dsa13_inspect_archives.ipynb` | + PSRCHIVE (CLI + Python), tempo2 | data root = mount; inventory built from the files; `fold.par` recovered from the PSRPARAM HDU into the work dir; beam term dropped; README / `volume.json` cells skipped |
 | `dsa13_timing.ipynb` | + PINT | same, plus outputs to `~/convening2026_work/templates/`; phase-connection limited to the visits present (visit 0) |
 
@@ -25,7 +25,7 @@ conda's activate scripts. `dsa13_timing` takes ~3 min and reproduces the expecte
 
 ```bash
 cd ~ && tar xzf ~/s3/schmidt-observatory-system/dsa/v1-convening/convening2026-release-2026.9.28.tar.gz
-pip install -e ~/convening2026-release-2026.9.28          # the convening2026 helper package
+pip install -e ~/convening2026-release-2026.9.28          # the dsahackathon2026 helper package
 ```
 
 CHR notebooks only: PSRCHIVE, tempo2 and PINT are not in the hub image, so create the env and register it as a kernel
@@ -33,10 +33,10 @@ CHR notebooks only: PSRCHIVE, tempo2 and PINT are not in the hub image, so creat
 
 ```bash
 mamba env create -f ~/convening2026-release-2026.9.28/environment.yml
-/srv/conda/envs/convening2026/bin/python -m ipykernel install --user --name convening2026 --display-name "Python (convening2026)"
+/srv/conda/envs/dsahackathon2026/bin/python -m ipykernel install --user --name dsahackathon2026 --display-name "Python (dsahackathon2026)"
 ```
 
-Then open `dsa13_*.ipynb` with **Python (convening2026)** (Kernel -> Change Kernel). `dsa3_load_plot` runs on the default
+Then open `dsa13_*.ipynb` with **Python (dsahackathon2026)** (Kernel -> Change Kernel). `dsa3_load_plot` runs on the default
 Python 3 kernel. If the mount lives elsewhere,
 set `DSA_DATA=/path/to/v1-convening` before starting the kernel.
 

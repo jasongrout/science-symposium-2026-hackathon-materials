@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-# src/convening2026/paths.py -> parents[2] is the repository root
+# src/dsahackathon2026/paths.py -> parents[2] is the repository root
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = REPO_ROOT / "data"
 
