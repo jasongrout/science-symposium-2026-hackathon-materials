@@ -1,4 +1,4 @@
-# Notebooks
+# Other notebooks
 
 General-purpose notebooks for the symposium hackathon — data access and tooling patterns that
 are not tied to one instrument. For the Lazuli instrument simulators, see [`lazuli/`](../lazuli/).
