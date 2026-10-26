@@ -48,7 +48,7 @@ spectral-line cubes. No notebook reads DPR-DSA-07. The files each notebook actua
 
 Notes:
 - The S3 bucket (`s3://schmidt-observatory-system/dsa/v2-convening/`, see
-  `../../notebooks/01_opening_fits_from_s3.ipynb`) is private; there are no AWS credentials
+  `../../other/01_opening_fits_from_s3.ipynb`) is private; there are no AWS credentials
   on this machine, so the missing files could not be fetched here. On the hub they are
   mounted at `~/s3/schmidt-observatory-system/`.
 - `fold.par` could be regenerated from the `PSRPARAM` HDU inside any archive, but
