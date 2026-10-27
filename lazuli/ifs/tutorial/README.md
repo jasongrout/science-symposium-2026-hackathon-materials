@@ -26,5 +26,6 @@ images and spectra (e.g. NGC 0628) come with the `lazuli_astrosim_data` package,
 | [2 — Your own targets](exercises/ex2_your_own_targets.ipynb) | 01–02 | ★★☆☆☆ |
 | [3 — What if?](exercises/ex3_what_if.ipynb) | 03–04 | ★★★☆☆ |
 | [4 — Supernovae in their hosts](exercises/ex4_supernovae_in_their_hosts.ipynb) | 07–08 | ★★★☆☆ |
+| [5 — A kilonova in its host](exercises/ex5_kilonova_in_its_host.ipynb) | 02, 07–08 | ★★★☆☆ |
 
 Solutions are in [`exercises/solutions/`](exercises/solutions/).
