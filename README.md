@@ -48,7 +48,7 @@ install instructions and request AWS credentials for the bucket.
 
 This repository includes a `CLAUDE.md` that gives Claude Code context about the observatory system: directory layout, installed packages and their entry points, tutorial notebook locations, the shared `lazuli_astrosim_data` package, the S3 data bucket, and the Python environment.
 
-Claude Code also has custom skills for each instrument that load automatically based on your prompt — you don't need to invoke them manually:
+We have also created custom skills for Claude Code that load automatically based on your prompt — you don't need to invoke them manually but you can as slash commands (e.g., /wcc-etc):
 
 | Skill | Loads when you ask about… |
 |---|---|
@@ -57,4 +57,5 @@ Claude Code also has custom skills for each instrument that load automatically b
 | `lazuli-ifs` | IFS SNR, spectral cubes, supernova/kilonova spectroscopy |
 | `lazuli-exo` | Exoplanet atmosphere detectability, transit spectroscopy with the coronagraph |
 | `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection |
+| `dsa` | DSA-2000 notebooks, data products (FRB, pulsar, continuum), and directory layout; points to the `dsa-sensitivity` skill for ETC questions |
 | `cross-observatory` | Questions spanning more than one facility |
