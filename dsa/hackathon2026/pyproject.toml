@@ -23,7 +23,7 @@ dependencies = [
   "ipywidgets>=8.0",
   "pint-pulsar>=1.1",
   "pyyaml>=6.0",
-  "pybdsf>=1.13",
+  "bdsf>=1.13",
 ]
 
 [project.optional-dependencies]
