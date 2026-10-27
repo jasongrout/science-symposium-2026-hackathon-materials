@@ -1,0 +1,7 @@
+.ipynb_checkpoints/
+__pycache__/
+.venv/
+.DS_Store
+*.swp
+lazuli/wcc/tips.md
+lazuli/esc/tips.md

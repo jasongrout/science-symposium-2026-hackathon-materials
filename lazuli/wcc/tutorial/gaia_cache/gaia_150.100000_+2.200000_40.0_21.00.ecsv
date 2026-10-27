@@ -1,0 +1,70 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - name: source_id
+#   datatype: int64
+#   description: Unique source identifier (unique within a particular Data Release)
+#   meta: !!omap
+#   - {ucd: meta.id}
+# - name: ra
+#   unit: deg
+#   datatype: float64
+#   description: Right ascension
+#   meta: !!omap
+#   - {ucd: pos.eq.ra;meta.main}
+#   - {utype: 'stc:AstroCoords.Position3D.Value3.C1'}
+# - name: dec
+#   unit: deg
+#   datatype: float64
+#   description: Declination
+#   meta: !!omap
+#   - {ucd: pos.eq.dec;meta.main}
+#   - {utype: 'stc:AstroCoords.Position3D.Value3.C2'}
+# - name: phot_g_mean_mag
+#   unit: mag
+#   datatype: float32
+#   description: G-band mean magnitude
+#   meta: !!omap
+#   - {ucd: phot.mag;em.opt}
+# - name: phot_bp_mean_mag
+#   unit: mag
+#   datatype: float32
+#   description: Integrated BP mean magnitude
+#   meta: !!omap
+#   - {ucd: phot.mag;em.opt.B}
+# - name: phot_rp_mean_mag
+#   unit: mag
+#   datatype: float32
+#   description: Integrated RP mean magnitude
+#   meta: !!omap
+#   - {ucd: phot.mag;em.opt.R}
+# - name: pmra
+#   unit: mas / yr
+#   datatype: float64
+#   description: Proper motion in right ascension direction
+#   meta: !!omap
+#   - {ucd: pos.pm;pos.eq.ra}
+#   - {utype: 'stc:AstroCoords.Velocity3D.Value3.C1'}
+# - name: pmdec
+#   unit: mas / yr
+#   datatype: float64
+#   description: Proper motion in declination direction
+#   meta: !!omap
+#   - {ucd: pos.pm;pos.eq.dec}
+#   - {utype: 'stc:AstroCoords.Velocity3D.Value3.C2'}
+# - name: parallax
+#   unit: mas
+#   datatype: float64
+#   description: Parallax
+#   meta: !!omap
+#   - {ucd: pos.parallax.trig}
+# - name: radial_velocity
+#   unit: km / s
+#   datatype: float32
+#   description: Radial velocity
+#   meta: !!omap
+#   - {ucd: spect.dopplerVeloc.opt;em.opt.I}
+#   - {utype: 'stc:AstroCoords.Velocity3D.Value3.C3'}
+# schema: astropy-2.0
+source_id ra dec phot_g_mean_mag phot_bp_mean_mag phot_rp_mean_mag pmra pmdec parallax radial_velocity
+3836259600466717952 150.09908854917842 2.2003974544993126 18.68492 18.955776 18.226591 -1.176790924935402 -3.7888151373372527 -0.22816456078847971 ""
