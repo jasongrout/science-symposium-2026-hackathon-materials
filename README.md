@@ -43,3 +43,18 @@ deeper: the same calculations as Python you can modify, chain together, and run 
 The notebooks are written for the symposium JupyterHub, where the S3 bucket is already readable
 (through the S3 API and as an NFS mount at `~/s3`). To run them elsewhere, follow the per-directory
 install instructions and request AWS credentials for the bucket.
+
+## Using Claude Code
+
+This repository includes a `CLAUDE.md` that gives Claude Code context about the observatory system: directory layout, installed packages and their entry points, tutorial notebook locations, the shared `lazuli_astrosim_data` package, the S3 data bucket, and the Python environment.
+
+Claude Code also has custom skills for each instrument that load automatically based on your prompt — you don't need to invoke them manually:
+
+| Skill | Loads when you ask about… |
+|---|---|
+| `wcc-etc` | WCC SNR, depth, exposure time for point or extended sources |
+| `wcc-sim` | Simulated WCC FITS images, stacks, or dithered mosaics |
+| `lazuli-ifs` | IFS SNR, spectral cubes, supernova/kilonova spectroscopy |
+| `lazuli-exo` | Exoplanet atmosphere detectability, transit spectroscopy with the coronagraph |
+| `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection |
+| `cross-observatory` | Questions spanning more than one facility |
