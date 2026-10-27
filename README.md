@@ -27,6 +27,7 @@ participants should be able to:
 | [`argus/`](argus/) | Argus Array | ArgusSim survey simulator and visit store: sky coverage, depth maps, and simulated light curves from the planned 5-year survey |
 | [`dsa/`](dsa/) | DSA-2000 | Hackathon release (`hackathon2026/`): HI cube, FRB mocks, and pulsar timing notebooks, plus the DSA sensitivity calculator (`exposure-time-calculator/`) as a web page and Python package |
 | [`lazuli/`](lazuli/) | Lazuli | Simulators for the three instruments: WCC (wide-field camera), ESC (coronagraph), and IFS (slicer spectrograph) with tutorials and exercises |
+| [`lazuli/science_gallery/`](lazuli/science_gallery/) | Lazuli | Eleven one-question science-case notebooks spanning all three Lazuli instruments (exoplanet atmospheres, supernovae, kilonovae, transient photometry, crowded fields) |
 | [`lfast/`](lfast/) | LFAST | Exposure time calculator and fiber throughput tables |
 | [`other/`](other/) | — | General-purpose notebooks not tied to one observatory, such as reading FITS files directly from S3 |
 
