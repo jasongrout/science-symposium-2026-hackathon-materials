@@ -25,6 +25,6 @@ mamba env create -f ~/convening2026-release-2026.9.28/environment.yml
 /srv/conda/envs/dsahackathon2026/bin/python -m ipykernel install --user --name dsahackathon2026 --display-name "Python (dsahackathon2026)"
 ```
 
-Then open `dsa13_*.ipynb` with **Python (dsahackathon2026)** (Kernel -> Change Kernel). `dsa3_load_plot` runs on the default
+Then open `dsa13_*.ipynb` with **Python (dsahackathon2026)** (Kernel -> Change Kernel). `dsa03_load_plot` runs on the default
 Python 3 kernel. If the mount lives elsewhere,
 set `DSA_DATA=/path/to/v1-convening` before starting the kernel.
