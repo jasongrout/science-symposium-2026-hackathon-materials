@@ -24,7 +24,7 @@ participants should be able to:
 
 | directory | observatory | content |
 |---|---|---|
-| [`argus/`](argus/) | Argus Array | ArgusSim survey simulator and visit store: sky coverage, depth maps, and simulated light curves from the planned 5-year survey |
+| [`argus/`](argus/) | Argus Array | ArgusSim survey simulator and visit store: sky coverage, depth maps, and simulated light curves from the planned 5-year survey; real images, cutouts and light curves from the Array's prototype |
 | [`dsa/`](dsa/) | DSA-2000 | Hackathon release (`hackathon2026/`): HI cube, FRB mocks, and pulsar timing notebooks, plus the DSA sensitivity calculator (`exposure-time-calculator/`) as a web page and Python package |
 | [`lazuli/`](lazuli/) | Lazuli | Simulators for the three instruments: WCC (wide-field camera), ESC (coronagraph), and IFS (slicer spectrograph) with tutorials and exercises |
 | [`lazuli/science_gallery/`](lazuli/science_gallery/) | Lazuli | Eleven one-question science-case notebooks spanning all three Lazuli instruments (exoplanet atmospheres, supernovae, kilonovae, transient photometry, crowded fields) |
@@ -57,6 +57,6 @@ We have also created custom skills for Claude Code that load automatically based
 | `wcc-sim` | Simulated WCC FITS images, stacks, or dithered mosaics |
 | `lazuli-ifs` | IFS SNR, spectral cubes, supernova/kilonova spectroscopy |
 | `lazuli-exo` | Exoplanet atmosphere detectability, transit spectroscopy with the coronagraph |
-| `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection |
+| `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection; the prototype data |
 | `dsa` | DSA-2000 notebooks, data products (FRB, pulsar, continuum), and directory layout; points to the `dsa-sensitivity` skill for ETC questions |
 | `cross-observatory` | Questions spanning more than one facility |

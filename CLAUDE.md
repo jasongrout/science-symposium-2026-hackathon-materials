@@ -13,6 +13,7 @@ Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS)
 | `dsa/hackathon2026/` | DSA-2000 | HI cube, FRB mocks, pulsar timing notebooks |
 | `dsa/exposure-time-calculator/` | DSA-2000 | Sensitivity calculator: web page + Python package (`dsa_etc`) |
 | `argus/argus_survey_model/` | Argus Array | Survey simulator (`argus_sim`): sky coverage, depth, light curves |
+| `argus/prototype_data/` | Argus Array | Prototype data notebooks and exercises: images, minipix cutouts with DQ and calibration records, light curves |
 | `lfast/` | LFAST | ETC notebook and fiber throughput tables |
 
 ## Key installed packages
@@ -31,7 +32,8 @@ Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS)
 - **`dsa_etc`** — sensitivity calculator CLI and Python API. Has its own `CLAUDE.md` at `dsa/exposure-time-calculator/CLAUDE.md` and a skill at `dsa/exposure-time-calculator/skill/dsa-sensitivity/SKILL.md`.
 
 ### Argus Array
-- **`argus_sim`** — survey simulator. Source in `argus/argus_survey_model/src/argus_sim/`.
+- **`argus_sim`** — survey simulator. Source in `argus/argus_survey_model/src/argus_sim/`. Skills: `argus`.
+- **`argex`** — client of the Argus archive; the prototype notebooks use `argex.read()` to open the staged sample's FITS files. Skills: `argus`.
 
 ### Shared data
 - **`lazuli_astrosim_data`** — bundled throughput curves, PSF files, and reference spectra used by `wcc_etc`, `wcc_sim`, and `slicersim`.
