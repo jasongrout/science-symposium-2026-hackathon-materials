@@ -42,6 +42,7 @@ jupyter lab
 
 | Notebook | What it does |
 |----------|----------------|
+| [dsa03_load_plot.ipynb](notebooks/dsa03_load_plot.ipynb) | Load and plot a section of the **DSA-03** forward-modeled full-band continuum mosaic, with a WCS coordinate overlay |
 | [dsa3_load_plot.ipynb](notebooks/dsa3_load_plot.ipynb) | Load and plot a **DPR-DSA-03** continuum mosaic |
 | [dsa13_inspect_archives.ipynb](notebooks/dsa13_inspect_archives.ipynb) | Inspect **DPR-DSA-13** CHR folded pulsar archives |
 | [dsa13_timing.ipynb](notebooks/dsa13_timing.ipynb) | Timing workflow on DPR-DSA-13 (PSRCHIVE + PINT) |
