@@ -35,6 +35,7 @@ Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS)
 ### Shared data
 - **`lazuli_astrosim_data`** — bundled throughput curves, PSF files, and reference spectra used by `wcc_etc`, `wcc_sim`, and `slicersim`.
 - S3 bucket `schmidt-observatory-system` is pre-mounted at `~/s3` on the symposium JupyterHub.
+- Lazuli notebooks set `os.environ['SNCOSMO_DATA_DIR']` at the beginning to point to the read-only S3 bucket containing pre-downloaded data needed by `sncosmo`. If you need to download more filters, bandpasses, spectra, etc. to answer a user query, you should `cp -r ~/s3/schmidt-observatory-system/nov26-symposium/sncosmo_data_dir/ ~/` and write new files to that local user-level directory, and then update `$SNCOSMO_DATA_DIR` for your notebook.
 
 ## Notebooks and tutorials
 
