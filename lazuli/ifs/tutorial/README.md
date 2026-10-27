@@ -24,9 +24,7 @@ images and spectra (e.g. NGC 0628) come with the `lazuli_astrosim_data` package,
 |---|---|---|
 | [1 — Planning with the ETC](exercises/ex1_planning_with_the_etc.ipynb) | 01–02 | ★☆☆☆☆ |
 | [2 — Your own targets](exercises/ex2_your_own_targets.ipynb) | 01–02 | ★★☆☆☆ |
-| [3 — Readout strategy](exercises/ex3_readout_strategy.ipynb) | 03 | ★★★☆☆ |
-| [4 — What if?](exercises/ex4_what_if.ipynb) | 03–04 | ★★★☆☆ |
-| [5 — Noise, cubes and the detector](exercises/ex5_noise_cubes_detector.ipynb) | 05–06 | ★★★★☆ |
-| [6 — Supernovae in their hosts](exercises/ex6_supernovae_in_their_hosts.ipynb) | 07–08 | ★★★☆☆ |
+| [3 — What if?](exercises/ex3_what_if.ipynb) | 03–04 | ★★★☆☆ |
+| [4 — Supernovae in their hosts](exercises/ex4_supernovae_in_their_hosts.ipynb) | 07–08 | ★★★☆☆ |
 
 Solutions are in [`exercises/solutions/`](exercises/solutions/).
