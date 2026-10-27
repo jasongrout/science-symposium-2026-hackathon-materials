@@ -58,5 +58,6 @@ We have also created custom skills for Claude Code that load automatically based
 | `lazuli-ifs` | IFS SNR, spectral cubes, supernova/kilonova spectroscopy |
 | `lazuli-exo` | Exoplanet atmosphere detectability, transit spectroscopy with the coronagraph |
 | `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection; the prototype data |
+| `lfast` | LFAST SNR, exposure time, spectrograph configuration (CSHELL vs WIYN Bench), fiber choice, or custom SED |
 | `dsa` | DSA-2000 notebooks, data products (FRB, pulsar, continuum), and directory layout; points to the `dsa-sensitivity` skill for ETC questions |
 | `cross-observatory` | Questions spanning more than one facility |

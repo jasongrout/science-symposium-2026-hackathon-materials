@@ -1,6 +1,6 @@
 # Science Symposium 2026 — Hackathon Materials
 
-Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS) Science Symposium 2026 hackathon. The four observatories are **Lazuli** (space telescope: WCC wide-field camera + IFS slicer spectrograph + ESC coronagraph), **DSA-2000** (radio array), **Argus Array** (wide-field photometric survey), and **LFAST** (liquid-mirror telescope).
+Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS) Science Symposium 2026 hackathon. The four observatories are **Lazuli** (space telescope: WCC wide-field camera + IFS slicer spectrograph + ESC coronagraph), **DSA-2000** (radio array), **Argus Array** (wide-field photometric survey), and **LFAST** (Large Fiber Array Spectroscopic Telescope).
 
 ## Directory layout
 
@@ -47,7 +47,7 @@ Each instrument's tutorial notebooks are the best first reference:
 - IFS: `lazuli/ifs/tutorial/01_exposure_time_calculator.ipynb` through `06_cubes_and_fields.ipynb`
 - ESC: `lazuli/esc/tutorial/` — coronagraph exercises
 - Lazuli science gallery: `lazuli/science_gallery/01` through `11` — eleven one-question worked examples spanning all three Lazuli instruments (exoplanet atmospheres, SN Ia, kilonovae, emission lines, TDEs, transit photometry, crowded fields); prefer these as starting points over building from scratch
-- LFAST: `lfast/ETC_schmidt_2026oct12.ipynb` — ETC for the LFAST-20X fiber spectrograph on Kitt Peak; computes SNR vs wavelength (400–1800 nm) per resolution element for a user-supplied target and instrument config
+- LFAST: `lfast/ETC_schmidt_2026oct12.ipynb` — ETC for the LFAST-20X fiber spectrograph on Kitt Peak; computes SNR vs wavelength (400–1800 nm) per resolution element for a user-supplied target and instrument config. Skills: `lfast`.
 - DSA: `dsa/hackathon2026/notebooks/dsa07_load_plot.ipynb` — load and plot the DPR-DSA-07 HI/continuum data product; `dsa11_dsa12_frb.ipynb` — browse FRB mock data products (DPR-DSA-11/12); `dsa13_inspect_archives.ipynb` and `dsa13_timing.ipynb` — inspect CHR pulsar timing archives and derive a timing solution
 - Argus: `argus/argus_survey_model/notebooks/tutorial_depth_calculation.ipynb` — compute the 5-sigma depth of an Argus exposure; `tutorial_survey_data.ipynb` — open and query a simulated Argus visit store
 
