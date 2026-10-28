@@ -1,6 +1,6 @@
 # Science Symposium 2026 — Hackathon Materials
 
-Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS) Science Symposium 2026 hackathon. The four observatories are **Lazuli** (space telescope: WCC wide-field camera + IFS slicer spectrograph + ESC coronagraph), **DSA-2000** (radio array), **Argus Array** (wide-field photometric survey), and **LFAST** (Large Fiber Array Spectroscopic Telescope).
+Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS) Science Symposium 2026 hackathon. The four observatories are **Lazuli** (space telescope: WCC wide-field camera + IFS slicer spectrograph + ESC coronagraph), **DSA** (radio array), **Argus Array** (wide-field photometric survey), and **LFAST** (Large Fiber Array Spectroscopic Telescope).
 
 ## Directory layout
 
@@ -10,8 +10,8 @@ Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS)
 | `lazuli/ifs/` | Lazuli IFS | Tutorial notebooks for the slicer integral-field spectrograph |
 | `lazuli/esc/` | Lazuli ESC | Coronagraph science case notebooks |
 | `lazuli/science_gallery/` | Lazuli (all) | Eleven one-question science-case notebooks spanning WCC, IFS, and ESC (exoplanet atmospheres, SN Ia, kilonovae, TDEs, transit photometry, crowded fields) |
-| `dsa/hackathon2026/` | DSA-2000 | HI cube, FRB mocks, pulsar timing notebooks |
-| `dsa/exposure-time-calculator/` | DSA-2000 | Sensitivity calculator: web page + Python package (`dsa_etc`) |
+| `dsa/hackathon2026/` | DSA | HI cube, FRB mocks, pulsar timing notebooks |
+| `dsa/exposure-time-calculator/` | DSA | Sensitivity calculator: web page + Python package (`dsa_etc`) |
 | `argus/argus_survey_model/` | Argus Array | Survey simulator (`argus_sim`): sky coverage, depth, light curves |
 | `argus/prototype_data/` | Argus Array | Prototype data notebooks and exercises: images, minipix cutouts with DQ and calibration records, light curves |
 | `lfast/` | LFAST | ETC notebook and fiber throughput tables |
@@ -28,7 +28,7 @@ Notebooks, simulators, and sample data for the Schmidt Observatory System (TSOS)
 ### Lazuli ESC (coronagraph)
 - **`lazuli_exo`** — exoplanet transmission spectroscopy ETC; high-level entry points `lazuli_exo.observe()`, `lazuli_exo.simulate()`, `list_planets()`, `list_scenarios()`. Skills: `lazuli-exo`.
 
-### DSA-2000
+### DSA
 - **`dsa_etc`** — sensitivity calculator CLI and Python API. Has its own `CLAUDE.md` at `dsa/exposure-time-calculator/CLAUDE.md` and a skill at `dsa/exposure-time-calculator/skill/dsa-sensitivity/SKILL.md`.
 
 ### Argus Array
