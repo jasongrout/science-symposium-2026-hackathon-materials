@@ -1,7 +1,7 @@
-# DSA-2000 — 2026 Science Convening Release
+# DSA — 2026 Science Convening Release
 
 Notebooks and sample data for the **2026 Science Convening of The Schmidt
-Observatory System** (DSA-2000 contribution).
+Observatory System** (DSA contribution).
 
 This branch (`main`) is for **notebook users**: install the environment, download
 the sample into `data/`, and run the notebooks.
@@ -28,7 +28,7 @@ Put all convening products in the single directory **`data/`** (not in git):
 
 ```bash
 # Once the convening bucket/prefix is assigned:
-aws s3 sync s3://BUCKET/PREFIX/dsa-2000/ data/
+aws s3 sync s3://BUCKET/PREFIX/dsa/ data/
 ```
 
 Details and expected files: [data/README.md](data/README.md).
