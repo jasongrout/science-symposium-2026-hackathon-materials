@@ -25,7 +25,7 @@ participants should be able to:
 | directory | observatory | content |
 |---|---|---|
 | [`argus/`](argus/) | Argus Array | ArgusSim survey simulator and visit store: sky coverage, depth maps, and simulated light curves from the planned 5-year survey; real images, cutouts and light curves from the Array's prototype |
-| [`dsa/`](dsa/) | DSA-2000 | Hackathon release (`hackathon2026/`): HI cube, FRB mocks, and pulsar timing notebooks, plus the DSA sensitivity calculator (`exposure-time-calculator/`) as a web page and Python package |
+| [`dsa/`](dsa/) | DSA | Hackathon release (`hackathon2026/`): HI cube, FRB mocks, and pulsar timing notebooks, plus the DSA sensitivity calculator (`exposure-time-calculator/`) as a web page and Python package |
 | [`lazuli/`](lazuli/) | Lazuli | Simulators for the three instruments: WCC (wide-field camera), ESC (coronagraph), and IFS (slicer spectrograph) with tutorials and exercises |
 | [`lfast/`](lfast/) | LFAST | Exposure time calculator and fiber throughput tables |
 | [`other/`](other/) | — | General-purpose notebooks not tied to one observatory, such as reading FITS files directly from S3 |
@@ -58,5 +58,5 @@ We have also created custom skills for Claude Code that load automatically based
 | `lazuli-exo` | Exoplanet atmosphere detectability, transit spectroscopy with the coronagraph |
 | `argus` | Argus sky coverage, per-position depth, cadence, or light curve injection; the prototype data |
 | `lfast` | LFAST SNR, exposure time, spectrograph configuration (CSHELL vs WIYN Bench), fiber choice, or custom SED |
-| `dsa` | DSA-2000 notebooks, data products (FRB, pulsar, continuum), and directory layout; points to the `dsa-sensitivity` skill for ETC questions |
+| `dsa` | DSA notebooks, data products (FRB, pulsar, continuum), and directory layout; points to the `dsa-sensitivity` skill for ETC questions |
 | `cross-observatory` | Questions spanning more than one facility |
