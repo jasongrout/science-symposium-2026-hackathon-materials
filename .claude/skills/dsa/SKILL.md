@@ -1,9 +1,9 @@
 ---
 name: dsa
-description: DSA-2000 hackathon materials. Load for questions about the DSA-2000 notebooks, data products (HI/continuum, FRB mocks, pulsar timing archives), the dsahackathon2026 helper package, or how the dsa/ directory is organized. For sensitivity/ETC questions, read dsa/exposure-time-calculator/skill/dsa-sensitivity/SKILL.md and dsa/exposure-time-calculator/CLAUDE.md.
+description: DSA hackathon materials. Load for questions about the DSA notebooks, data products (HI/continuum, FRB mocks, pulsar timing archives), the dsahackathon2026 helper package, or how the dsa/ directory is organized. For sensitivity/ETC questions, read dsa/exposure-time-calculator/skill/dsa-sensitivity/SKILL.md and dsa/exposure-time-calculator/CLAUDE.md.
 ---
 
-# DSA-2000 Hackathon Materials
+# DSA Hackathon Materials
 
 The `dsa/` directory has two subdirectories:
 
@@ -27,7 +27,7 @@ find_product("DPR-DSA-11")  # resolves to a file under data/
 
 | Notebook | Data product | What it does |
 |---|---|---|
-| `dsa07_load_plot.ipynb` | DPR-DSA-03 | Load and plot a DSA-2000 continuum mosaic (FITS) |
+| `dsa07_load_plot.ipynb` | DPR-DSA-03 | Load and plot a DSA continuum mosaic (FITS) |
 | `dsa11_dsa12_frb.ipynb` | DPR-DSA-11/12 | Explore FRB mock data: voltage cutout (HDF5, 4+4-bit complex) and total-intensity dynamic spectrum; DM, Stokes I, polarisation |
 | `dsa13_inspect_archives.ipynb` | DPR-DSA-13 | Inspect CHR folded pulsar archives (PSRFITS, PSRCHIVE-readable) |
 | `dsa13_timing.ipynb` | DPR-DSA-13 | Pulsar timing workflow with PSRCHIVE + PINT |
@@ -35,7 +35,7 @@ find_product("DPR-DSA-11")  # resolves to a file under data/
 ### Data download
 
 ```bash
-aws s3 sync s3://BUCKET/PREFIX/dsa-2000/ dsa/hackathon2026/data/
+aws s3 sync s3://BUCKET/PREFIX/dsa/ dsa/hackathon2026/data/
 ```
 
 See `dsa/hackathon2026/DATA.md` for science descriptions and volumes. Key data products:
